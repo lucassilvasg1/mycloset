@@ -1,0 +1,65 @@
+<!-- Header -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- Back To Landing Page -->
+    <ion-buttons slot="start">
+      <ion-back-button color="color1" default-href="" text="" icon="arrow-back" routerLink="/landing"
+        routerDirection="root">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="signup" fullscreen>
+  <div class="section_one">
+    <h2>Inscrever-se</h2>
+    <p>Preencha os detalhes e crie sua conta</p>
+  </div>
+
+  <!-- SignUp Form -->
+  <div class="section_two ion-padding">
+    <form class="ion-padding" #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <!-- Nome -->
+      <ion-item [ngClass]="aplicaCssErro(nome)">
+        <ion-label>
+          <ion-icon name="person" color="color2"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Nome" [(ngModel)]="entity.nome" name="nome" #nome="ngModel" required
+          maxlength="200"></ion-input>
+      </ion-item>
+      <app-error-message [control]="nome" label="Nome"></app-error-message>
+
+      <!-- Email -->
+      <ion-item class="ion-padding-top" [ngClass]="aplicaCssErro(email)">
+        <ion-label>
+          <ion-icon name="mail" color="color2"></ion-icon>
+        </ion-label>
+        <ion-input type="email" placeholder="Email" [(ngModel)]="entity.email" name="email" #email="ngModel" required
+          email maxlength="300"></ion-input>
+      </ion-item>
+      <app-error-message [control]="email" label="Email"></app-error-message>
+
+
+      <!-- Senha -->
+      <ion-item class="ion-padding-top" [ngClass]="aplicaCssErro(senha)">
+        <ion-label>
+          <ion-icon name="eye" color="color2"></ion-icon>
+        </ion-label>
+        <ion-input type="password" placeholder="Senha" [(ngModel)]="entity.senha" name="senha" #senha="ngModel"
+          minlength="6" required></ion-input>
+      </ion-item>
+      <app-error-message [control]="senha" label="Senha"></app-error-message>
+
+      <!-- SignUp Button -->
+      <div class="buttons ion-padding-top">
+        <ion-button expand="block" color="color1" type="submit">
+          <ion-text><strong>CADASTRAR</strong></ion-text>
+        </ion-button>
+
+        <br />
+
+      </div>
+    </form>
+  </div>
+</ion-content>

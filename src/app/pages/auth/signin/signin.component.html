@@ -1,0 +1,53 @@
+<!-- Header -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="color1" default-href="" text="" icon="arrow-back" routerLink="/landing"
+        routerDirection="root">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contents -->
+<ion-content id="signin" fullscreen>
+  <div class="section_one">
+    <h2>LOGIN</h2>
+  </div>
+
+  <div class="section_two ion-padding">
+    <img class="ion-padding" src="assets/images/forgot-password.png" />
+    <!-- SignIn Form -->
+    <form class="ion-padding" #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <!-- Email -->
+      <ion-item>
+        <ion-label>
+          <ion-icon name="mail" color="color2"></ion-icon>
+        </ion-label>
+        <ion-input type="email" placeholder="Email" [(ngModel)]="entity.email" name="email" #email="ngModel" required
+          email maxlength="300"></ion-input>
+      </ion-item>
+      <!-- Password -->
+      <ion-item class="ion-padding-top">
+        <ion-label>
+          <ion-icon name="eye" color="color2"></ion-icon>
+        </ion-label>
+        <ion-input type="password" placeholder="Senha" [(ngModel)]="entity.senha" name="senha" #senha="ngModel"
+          minlength="6" required></ion-input>
+      </ion-item>
+
+      <!-- SignIn Buttons -->
+      <div class="buttons">
+        <ion-button expand="block" color="color1" type="submit">
+          <ion-text><strong>SIGN IN</strong></ion-text>
+        </ion-button>
+      </div>
+    </form>
+  </div>
+
+  <div class="section_three">
+    <ion-button fill="clear" color="color2" routerLink="/inscricao" routerDirection="root">
+      <span>Don't have an account? <b>Sign Up</b></span>
+    </ion-button>
+  </div>
+</ion-content>

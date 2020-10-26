@@ -1,0 +1,8 @@
+{
+  "name": "fiveContacts",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
