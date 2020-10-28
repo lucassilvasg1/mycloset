@@ -1,3 +1,49 @@
-<p>
-  adicionar-produto works!
-</p>
+<ion-header class="ion-no-border">
+    <ion-toolbar color="color1">
+
+        <!-- Side Menu Option -->
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <!-- Title of page -->
+        <ion-title>My Closet</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+<!-- Contents -->
+<ion-content id="signin" fullscreen>
+  <div class="section_one">
+    <h2>Cadastrar Produto</h2>
+  </div>
+
+  <div class="section_two ion-padding">
+    <!-- SignIn Form -->
+    <form class="ion-padding" #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <img  *ngIf="base64; else camera" (click)="pickImage()" style="border-radius: 50%; width: 100px; height: 100px; margin: 0 auto; display: block;" [src]="base64">
+      <ng-template #camera>
+        <img (click)="pickImage()" src="assets/images/camera_icone.png" style="margin: 0 auto; display: block; border: 0px; width: 75px; height: 75px;" />     
+      </ng-template>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Nome" [(ngModel)]="entity.name" name="name" #name="ngModel" required
+          maxlength="300"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Descricao" [(ngModel)]="entity.description" name="descricao" #descricao="ngModel"
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" placeholder="Preço" [(ngModel)]="entity.price" name="preco" #preco="ngModel" required></ion-input>
+      </ion-item>
+
+      <!-- SignIn Buttons -->
+      <div class="buttons">
+        <ion-button expand="block" color="color1" type="submit">
+          <ion-text><strong>Cadastrar</strong></ion-text>
+        </ion-button>
+      </div>
+    </form>
+  </div>
+
+</ion-content>

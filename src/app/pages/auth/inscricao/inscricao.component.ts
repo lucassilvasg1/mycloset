@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
@@ -13,9 +14,10 @@ import { Usuario } from './../../../models/usuario/usuario';
 export class InscricaoComponent extends FormComponent implements OnInit {
 
   constructor(private service: AuthService,
-    private router: Router,
-    public toastController: ToastController,
-    private loadingController: LoadingController) {
+              private router: Router,
+              public toastController: ToastController,
+              private loadingController: LoadingController,
+              private afs: AngularFirestore) {
     super();
   }
   entity: Usuario;
@@ -29,7 +31,17 @@ export class InscricaoComponent extends FormComponent implements OnInit {
     await this.presentLoading();
     try {
 
-      await this.service.register(this.entity);
+      await this.service.register(this.entity).then( res => {
+        this.afs.collection('users').doc(res.user.uid).set({
+          uid: res.user.uid,
+          name: this.entity.nome,
+          numero : this.entity.numero,
+          email: this.entity.email
+        } );
+
+        this.router.navigate(['/landing']);
+      });
+
       this.router.navigate(['/landing']);
 
     } catch (error) {

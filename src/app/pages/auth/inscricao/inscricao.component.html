@@ -30,6 +30,15 @@
       </ion-item>
       <app-error-message [control]="nome" label="Nome"></app-error-message>
 
+       <!-- Email -->
+      <ion-item class="ion-padding-top" [ngClass]="aplicaCssErro(email)">
+        <ion-label>
+          <ion-icon name="call" color="color2"></ion-icon>
+        </ion-label>
+        <ion-input type="numero"  mask="(00) 00000-0000" placeholder="Numero" [(ngModel)]="entity.numero" name="numero" #numero="ngModel" required
+          numero maxlength="300"></ion-input>
+      </ion-item>
+
       <!-- Email -->
       <ion-item class="ion-padding-top" [ngClass]="aplicaCssErro(email)">
         <ion-label>

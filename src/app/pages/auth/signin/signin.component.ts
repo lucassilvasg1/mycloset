@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormComponent } from 'src/app/components/form/form.component';
 import { Usuario } from 'src/app/models/usuario/usuario';
-import { StorageService } from 'src/app/services/storage.service';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -32,7 +31,6 @@ export class SigninComponent extends FormComponent implements OnInit {
     try {
       await this.service.login(this.entity);
       this.router.navigate(['/home']);
-
     } catch (error) {
       this.presentToast(error.message);
     } finally {

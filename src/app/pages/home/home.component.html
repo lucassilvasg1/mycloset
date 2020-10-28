@@ -34,9 +34,9 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let product of products">
-      <ion-item button [routerLink]="['/details', product.id]">
+      <ion-item button (click)="compartilhar(product.userId)">
         <ion-avatar slot="start">
-          <!-- <img [src]="product.picture"> -->
+          <img [src]="product.linkImage">
         </ion-avatar>
 
         <ion-label>
@@ -62,8 +62,8 @@
   <ion-toolbar>
     <ion-grid>
       <ion-row>
-        <ion-col size="6">
-          <ion-button (click)="verProduto()" expand="block">
+        <ion-col n-col size="6">
+          <ion-button  routerLink="/verProduto" expand="block">
             Ver produto
           </ion-button>
         </ion-col>

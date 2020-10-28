@@ -1,4 +1,3 @@
-import { Contato } from '../contato/contato';
 
 export class Usuario {
     nome: string;

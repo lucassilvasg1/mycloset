@@ -33,7 +33,6 @@ export class FormValidations {
 
   static email(control: FormControl)
   {
-    alert(19)
     let email = control.value;
 
     if(email == null || email == '')

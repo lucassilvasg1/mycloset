@@ -1,0 +1,45 @@
+#signin {
+    text-align: center;
+
+    .section_one {
+        height: 10%;
+
+        h2 {
+            font-weight: 900;
+            padding-top: 2%;
+        }
+
+        p {
+            color: var(--ion-color-color1);
+            font-weight: bold;
+        }
+    }
+
+    .section_two {
+        height: 80%;
+
+        img {
+            height: 40%;
+        }
+    }
+
+    .section_three {
+        height: 5%;
+    }
+
+    a.btn-social,
+    .btn-social {
+        border-radius: 50%;
+        color: #ffffff !important;
+        display: inline-block;
+        height: 35px;
+        line-height: 35px;
+        margin: 8px 4px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color .3s;
+        width: 35px;
+    }
+
+
+}

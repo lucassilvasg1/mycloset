@@ -10,10 +10,10 @@ export class ProductService {
   private productsCollection: AngularFirestoreCollection<Product>;
 
   constructor(private afs: AngularFirestore) {
-    this.productsCollection = this.afs.collection<Product>('Products');
   }
 
-  getProducts() {
+  getProducts(id) {
+    this.productsCollection = this.afs.collection<Product>('Products', ref => ref.where('userId', '==', id)); 
     return this.productsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -25,9 +25,9 @@ export class ProductService {
       })
     );
   }
-
+  
   addProduct(product: Product) {
-    return this.productsCollection.add(product);
+    return this.productsCollection.add({...product});
   }
 
   getProduct(id: string) {

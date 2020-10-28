@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Usuario } from '../models/usuario/usuario';
@@ -7,7 +8,7 @@ import { Usuario } from '../models/usuario/usuario';
 })
 export class AuthService {
 
-  constructor(private afa : AngularFireAuth) { }
+  constructor(private afa : AngularFireAuth, private afs : AngularFirestore) { }
 
   login(user : Usuario)
   {
@@ -15,6 +16,8 @@ export class AuthService {
   }
 
   register(user : Usuario) {
+
+
     return this.afa.createUserWithEmailAndPassword(user.email, user.senha);
   }
 
@@ -22,7 +25,7 @@ export class AuthService {
     return this.afa.signOut();
   }
 
-  getAuth() {
-    return this.afa;
+  async getAuth() {
+    return (await this.afa.currentUser).uid;
   }
 }

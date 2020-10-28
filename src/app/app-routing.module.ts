@@ -7,10 +7,9 @@ const routes: Routes = [
   { path: 'inscricao', loadChildren: () => import('./pages/auth/inscricao/inscricao.module').then(m => m.InscricaoModule) },
   { path: 'signin', loadChildren: () => import('./pages/auth/signin/signin.module').then(m => m.SigninModule) },
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
-  { path: 'favorite', loadChildren: () => import('./pages/favorite/favorite.module').then(m => m.FavoriteModule) },
   { path: 'onbroading', loadChildren: () => import('./pages/onboarding/onboarding.module').then(m => m.OnboardingModule) },
   { path: 'adicionarProduto', loadChildren: () => import('./pages/adicionar-produto/adicionar-produto.module').then(m => m.AdicionarProdutoModule) },
-  { path: 'perfil', loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilModule) },
+  { path: 'verProduto', loadChildren: () => import('./pages/ver-produto/ver-produto.module').then(m => m.VerProdutoModule) },
 ];
 
 @NgModule({

@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar color="color1">
+
+        <!-- Side Menu Option -->
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <!-- Title of page -->
+        <ion-title>My Closet</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="padding: 10px;">
+    <ion-input type="text" placeholder="Codigo" [(ngModel)]="productUserId" maxlength="200"></ion-input>
+  </div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let product of products">
+      <ion-item button>
+        <ion-avatar slot="start">
+          <img [src]="product.linkImage">
+        </ion-avatar>
+
+        <ion-label>
+          {{ product.name }}
+          <p>{{ product.description }}</p>
+          <p>{{ product.createdAt | date: 'short' }}</p>
+        </ion-label>
+
+        <ion-note color="primary" slot="end" *ngIf="product.price">{{ product.price | currency: 'BRL' }}</ion-note>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <div *ngIf="products == null || products.lenght == 0" >Nenhum produto encontrado</div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row >
+        <ion-col n-col size="12">
+          <ion-button  (click)="verProduto()">
+            Ver produto
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -8,13 +8,17 @@ import { IonicStorageModule } from '@ionic/storage';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Contacts } from '@ionic-native/contacts';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage'
+import { Camera } from '@ionic-native/camera/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent,
@@ -36,8 +40,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage'
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Contacts,
-    CallNumber
+    CallNumber,
+    Camera,
+    Crop,
+    File,
+    WebView,
+    SocialSharing
   ],
   bootstrap: [AppComponent]
 })

@@ -15,14 +15,9 @@ export class PagesService {
         icon: 'home'
       },
       {
-        title: 'Favoritos',
-        url: '/favorite',
-        icon: 'heart'
-      },
-      {
-        title: 'Configurações',
+        title: 'Perfil',
         url: '/perfil',
-        icon: 'cog'
+        icon: 'person'
       }
     ];
   }

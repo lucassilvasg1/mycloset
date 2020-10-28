@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActionSheetController, LoadingController, ToastController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
@@ -8,13 +8,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   private loading: any;
   public products = new Array<Product>();
@@ -32,13 +33,19 @@ export class HomeComponent implements OnInit {
     private file: File,
     private webview: WebView,
     private actionSheetController: ActionSheetController,
+    private socialSharing: SocialSharing,
   ) {
-    this.productsSubscription = this.productService.getProducts().subscribe(data => {
-      this.products = data;
+      this.authService.getAuth().then( res => {
+      this.productsSubscription = this.productService.getProducts(res).subscribe(data => {
+        this.products = data;
+      });
+    
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+   
+  }
 
   ngOnDestroy() {
     this.productsSubscription.unsubscribe();
@@ -107,10 +114,10 @@ export class HomeComponent implements OnInit {
 
   async showCroppedImage(ImagePath) {
 
-    var copyPath = ImagePath;
-    var splitPath = copyPath.split('/');
-    var imageName = splitPath[splitPath.length - 1];
-    var filePath = ImagePath.split(imageName)[0];
+    const copyPath = ImagePath;
+    const splitPath = copyPath.split('/');
+    const imageName = splitPath[splitPath.length - 1];
+    const filePath = ImagePath.split(imageName)[0];
 
     const tempBaseFilesystemPath = ImagePath.substr(0, ImagePath.lastIndexOf('/') + 1);
     const newBaseFilesystemPath = this.file.dataDirectory;
@@ -148,5 +155,10 @@ export class HomeComponent implements OnInit {
       ]
     });
     await actionSheet.present();
+  }
+
+  compartilhar(id)
+  {
+    this.socialSharing.share(id, 'Veja meu produto');
   }
 }
